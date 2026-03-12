@@ -4,7 +4,7 @@ import useCart from "../hooks/useCart";
 import { useState, useEffect } from "react";
 import { FiSearch, FiShoppingCart, FiMenu, FiX } from "react-icons/fi";
 import { FaFire } from "react-icons/fa";
-import "./Navbar.css";
+import "./navbar.css";
 
 const Navbar = () => {
   const { user, isLoggedIn, logout } = useAuth();

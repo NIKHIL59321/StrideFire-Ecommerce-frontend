@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { FiSearch, FiFilter, FiGrid, FiList } from "react-icons/fi";
 import ProductCard from "../components/ProductCard";
-import FilterSidebar from "../components/FilterSidebar";
+import FilterSidebar from "../components/FilterSideBar";
 import { getAllProducts } from "../services/productService";
 import "../styles/shop.css";
 import { MdInbox } from "react-icons/md";
