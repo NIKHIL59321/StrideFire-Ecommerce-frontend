@@ -12,7 +12,7 @@ import OrderSuccess from "./pages/OrderSuccess";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import AuthCallback from "./pages/AuthCallback";
-import NotFound from "./pages/NotFound";
+import NotFound from "./pages/Notfound";
 import Orders from './pages/Orders'
 
 import "./index.css";
