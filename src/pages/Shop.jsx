@@ -80,6 +80,11 @@ const Shop = () => {
     
     },[products,search, filters, sortBy])
 
+    useEffect(() => {
+    console.log('API URL:',
+        import.meta.env.VITE_API_URL)
+}, [])
+
     const handleFilterChange = (type, value)=>{
       if(type==='price'){
         setFilters(prev=>({
