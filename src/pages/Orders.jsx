@@ -26,10 +26,6 @@ const Orders = () => {
 
         const data = await getOrders(user.id);
 
-        console.log("Orders response:", data);
-        console.log("First order:", data.orders?.[0]);
-        console.log("First order status:", data.orders?.[0]?.status);
-
         const ordersList = Array.isArray(data.orders)
           ? data.orders
           : Array.isArray(data)
@@ -40,6 +36,7 @@ const Orders = () => {
       } catch (error) {
         console.log("Failed to fetch orders:", error);
         setError("Failed to load orders");
+        setOrders([]);
       } finally {
         setLoading(false);
       }
@@ -51,8 +48,9 @@ const Orders = () => {
   // ─────────────────────────────────────────
   // FILTER ORDERS BY TAB
   // ─────────────────────────────────────────
-  const filteredOrders =
-    activeTab === "ALL"
+  const filteredOrders = !Array.isArray(orders)
+    ? []
+    : activeTab === "ALL"
       ? orders
       : orders.filter((order) => order.status?.toUpperCase() === activeTab);
 
@@ -60,9 +58,6 @@ const Orders = () => {
   // HANDLE CANCEL ORDER
   // ─────────────────────────────────────────
   const handleCancel = async (orderId) => {
-    console.log("Cancel clicked! orderId:", orderId);
-    console.log("userId:", user.id);
-
     if (!window.confirm("Are you sure you want to cancel?")) return;
 
     try {
@@ -70,7 +65,6 @@ const Orders = () => {
 
       await cancelOrder(orderId, parseInt(user.id));
 
-      // ✅ Update status locally
       setOrders((prev) =>
         prev.map((order) =>
           order.orderId === orderId ? { ...order, status: "CANCELLED" } : order,
@@ -91,6 +85,8 @@ const Orders = () => {
     switch (status?.toUpperCase()) {
       case "PLACED":
         return "status-placed";
+      case "CONFIRMED":
+        return "status-confirmed";
       case "SHIPPED":
         return "status-shipped";
       case "DELIVERED":
@@ -114,7 +110,6 @@ const Orders = () => {
     });
   };
 
-              
   return (
     <div className="orders-page">
       <div className="container">
@@ -173,116 +168,125 @@ const Orders = () => {
           </div>
         ) : (
           <div className="orders-list">
-            {filteredOrders.map((order, orderIndex) => (
-               <div key={order.orderId || orderIndex} className="order-card">
-                {/* ── ORDER HEADER ── */}
-                <div className="order-card-header">
-                  <div className="order-card-left">
-                    <span className="order-id">Order #{order.orderId}</span>
-                    <span className="order-date">
-                      {formatDate(order.createdAt)}
-                    </span>
-                  </div>
-                  <div className="order-card-right">
-                    <span
-                      className={`order-status
-                        ${getStatusClass(order.status)}`}
-                    >
-                      {order.status}
-                    </span>
-                  </div>
-                </div>
-
-                {/* ── ORDER ITEMS ── */}
-                <div className="order-items">
-                  {order.orderItems && order.orderItems.length > 0 ? (
-                    order.orderItems.map((item, itemIndex) => (
-                      <div
-                        key={`order-${order.orderId}-item-${itemIndex}`}
-                        className="order-item"
+            {filteredOrders.map((order, orderIndex) => {
+              return (
+                <div key={order.orderId || orderIndex} className="order-card">
+                  {/* ── ORDER HEADER ── */}
+                  <div className="order-card-header">
+                    <div className="order-card-left">
+                      <span className="order-id">Order #{order.orderId}</span>
+                      <span className="order-date">
+                        {formatDate(order.createdAt)}
+                      </span>
+                    </div>
+                    <div className="order-card-right">
+                      <span
+                        className={`order-status
+                                                ${getStatusClass(
+                                                  order.status,
+                                                )}`}
                       >
-                        <img
-                          src={
-                            item.imageUrl ||
-                            item.productImageUrl ||
-                            "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=100"
-                          }
-                          alt={item.productName || "Product"}
-                          className="order-item-image"
-                          onError={(e) => {
-                            e.target.src =
-                              "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=100";
-                          }}
-                        />
-                        <div className="order-item-info">
-                          <span className="order-item-name">
-                            {item.productName || `Product #${item.productId}`}
-                          </span>
-                          <span className="order-item-meta">
-                            Qty: {item.quantity}
-                            {item.size && ` | Size: ${item.size}`}
+                        {order.status}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* ── ORDER ITEMS ── */}
+                  <div className="order-items">
+                    {Array.isArray(order.orderItems) &&
+                    order.orderItems.length > 0 ? (
+                      order.orderItems.map((item, itemIndex) => (
+                        <div
+                          key={`order-${order.orderId}-item-${itemIndex}`}
+                          className="order-item"
+                        >
+                          <img
+                            src={
+                              item.imageUrl ||
+                              "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=100"
+                            }
+                            alt={item.productName || "Product"}
+                            className="order-item-image"
+                            onError={(e) => {
+                              e.target.src =
+                                "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=100";
+                            }}
+                          />
+                          <div className="order-item-info">
+                            <span className="order-item-name">
+                              {item.productName || `Product #${item.productId}`}
+                            </span>
+                            <span className="order-item-meta">
+                              Qty: {item.quantity}
+                              {item.size && ` | Size: ${item.size}`}
+                            </span>
+                          </div>
+                          <span className="order-item-price">
+                            ₹
+                            {(
+                              (item.price || 0) * item.quantity
+                            ).toLocaleString()}
                           </span>
                         </div>
-                        <span className="order-item-price">
-                          ₹
-                          {((item.price || 0) * item.quantity).toLocaleString()}
-                        </span>
-                      </div>
-                    ))
-                  ) : (
-                    <p className="no-items-text">No items found</p>
-                  )}
-                </div>
-
-                {/* ── ORDER FOOTER ── */}
-                <div className="order-card-footer">
-                  <div className="order-total">
-                    <span>Total Amount</span>
-                    <span className="order-total-amount">
-                      ₹{(order.total || 0).toLocaleString()}
-                    </span>
+                      ))
+                    ) : (
+                      <p className="no-items-text">No items found</p>
+                    )}
                   </div>
 
-                  {/* ✅ Cancel button */}
-                  {order.status?.toUpperCase() === "PLACED" && (
-                    <button
-                      className="cancel-order-btn"
-                      onClick={() => {
-                        console.log("Cancel btn clicked:", order.orderId);
-                        handleCancel(order.orderId);
-                      }}
-                      disabled={cancellingId === order.orderId}
-                    >
-                      {cancellingId === order.orderId
-                        ? "Cancelling..."
-                        : "Cancel Order"}
-                    </button>
-                  )}
-                  {/* ── PAYMENT STATUS ── */}
-                  <div className="payment-status-row">
-                    <span className="payment-label">Payment</span>
-                    <span className={`payment-badge${
-                      order.paymentStatus === "SUCCESS"
-                      ? "payment-success"
-                      : order.paymentStatus === "FAILED"
-                        ? "payment-failed"
-                        : "payment-pending"
-                    }`}>
-                      {order.paymentStatus === "SUCCESS"
-                        ? "✅ Paid"
-                        : order.paymentStatus === "PENDING"
-                          ? "⏳ Pending"
-                          : "❌ Failed"}
-                    </span>
-                    {order.paymentMethod && order.paymentMethod !== "N/A" && (
-                      <span className="payment-method-badge">
-                        {order.paymentMethod}
+                  {/* ── ORDER FOOTER ── */}
+                  <div className="order-card-footer">
+                    <div className="order-total">
+                      <span>Total Amount</span>
+                      <span className="order-total-amount">
+                        ₹{(order.total || 0).toLocaleString()}
                       </span>
+                    </div>
+
+                    {/* ── PAYMENT STATUS ── */}
+                    <div className="payment-status-row">
+                      <span className="payment-label">Payment</span>
+                      <span
+                        className={`payment-badge ${
+                          order.paymentStatus?.trim().toUpperCase() ===
+                          "SUCCESS"
+                            ? "payment-success"
+                            : order.paymentStatus?.trim().toUpperCase() ===
+                                "FAILED"
+                              ? "payment-failed"
+                              : "payment-pending"
+                        }`}
+                      >
+                        {order.paymentStatus?.trim().toUpperCase() === "SUCCESS"
+                          ? "✅ Paid"
+                          : order.paymentStatus?.trim().toUpperCase() ===
+                              "FAILED"
+                            ? "❌ Failed"
+                            : "⏳ Pending"}
+                      </span>
+                      {order.paymentMethod && order.paymentMethod !== "N/A" && (
+                        <span className="payment-method-badge">
+                          {order.paymentMethod}
+                        </span>
+                      )}
+                    </div>
+
+                    {/* ── CANCEL BUTTON ── */}
+                    {order.status?.toUpperCase() === "PLACED" && (
+                      <button
+                        className="cancel-order-btn"
+                        onClick={() => handleCancel(order.orderId)}
+                        disabled={cancellingId === order.orderId}
+                      >
+                        {cancellingId === order.orderId
+                          ? "Cancelling..."
+                          : "Cancel Order"}
+                      </button>
                     )}
                   </div>
                 </div>
-              </div>
-          ))}
+              );
+            })}
           </div>
         )}
       </div>
