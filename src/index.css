@@ -1,0 +1,413 @@
+/* ─────────────────────────────────────
+   GOOGLE FONTS
+───────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* ─────────────────────────────────────
+   CSS VARIABLES
+───────────────────────────────────── */
+:root {
+  /* Colors */
+  --primary         : #FF4500;
+  --primary-dark    : #CC3700;
+  --primary-light   : #FF6A33;
+  --secondary       : #1A1A1A;
+  --background      : #F8F8F8;
+  --white           : #FFFFFF;
+  --text-dark       : #1A1A1A;
+  --text-light      : #666666;
+  --text-muted      : #999999;
+  --border          : #E0E0E0;
+  --border-dark     : #CCCCCC;
+  --success         : #28A745;
+  --error           : #DC3545;
+  --warning         : #FFC107;
+
+  /* Typography */
+  --font-primary    : 'Poppins', sans-serif;
+  --font-xs         : 12px;
+  --font-sm         : 14px;
+  --font-md         : 16px;
+  --font-lg         : 20px;
+  --font-xl         : 24px;
+  --font-xxl        : 36px;
+  --font-hero       : 52px;
+
+  /* Spacing */
+  --space-xs        : 4px;
+  --space-sm        : 8px;
+  --space-md        : 16px;
+  --space-lg        : 24px;
+  --space-xl        : 32px;
+  --space-xxl       : 64px;
+
+  /* Border Radius */
+  --radius-sm       : 4px;
+  --radius-md       : 8px;
+  --radius-lg       : 16px;
+  --radius-xl       : 24px;
+  --radius-full     : 999px;
+
+  /* Shadows */
+  --shadow-sm       : 0 2px 4px rgba(0,0,0,0.08);
+  --shadow-md       : 0 4px 12px rgba(0,0,0,0.12);
+  --shadow-lg       : 0 8px 24px rgba(0,0,0,0.16);
+  --shadow-xl       : 0 16px 40px rgba(0,0,0,0.2);
+
+  /* Transitions */
+  --transition      : all 0.3s ease;
+  --transition-fast : all 0.15s ease;
+
+  /* Navbar Height */
+  --navbar-height   : 70px;
+}
+
+/* ─────────────────────────────────────
+   RESET
+───────────────────────────────────── */
+*,
+*::before,
+*::after {
+  margin      : 0;
+  padding     : 0;
+  box-sizing  : border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family       : var(--font-primary);
+  font-size         : var(--font-md);
+  color             : var(--text-dark);
+  background-color  : var(--background);
+  line-height       : 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width : 100%;
+  display   : block;
+}
+
+a {
+  text-decoration : none;
+  color           : inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  cursor      : pointer;
+  border      : none;
+  outline     : none;
+  font-family : var(--font-primary);
+}
+
+input,
+select,
+textarea {
+  font-family : var(--font-primary);
+  outline     : none;
+}
+
+/* ─────────────────────────────────────
+   LAYOUT
+───────────────────────────────────── */
+.container {
+  width       : 100%;
+  max-width   : 1200px;
+  margin      : 0 auto;
+  padding     : 0 var(--space-md);
+}
+
+.page-wrapper {
+  min-height    : 100vh;
+  padding-top   : var(--navbar-height);
+}
+
+/* ─────────────────────────────────────
+   BUTTONS
+───────────────────────────────────── */
+.btn-primary {
+  background    : var(--primary);
+  color         : var(--white);
+  padding       : 12px 28px;
+  border-radius : var(--radius-full);
+  font-size     : var(--font-sm);
+  font-weight   : 600;
+  transition    : var(--transition);
+  display       : inline-block;
+}
+
+.btn-primary:hover {
+  background    : var(--primary-dark);
+  transform     : translateY(-2px);
+  box-shadow    : var(--shadow-md);
+}
+
+.btn-secondary {
+  background    : transparent;
+  color         : var(--primary);
+  padding       : 12px 28px;
+  border-radius : var(--radius-full);
+  font-size     : var(--font-sm);
+  font-weight   : 600;
+  border        : 2px solid var(--primary);
+  transition    : var(--transition);
+  display       : inline-block;
+}
+
+.btn-secondary:hover {
+  background    : var(--primary);
+  color         : var(--white);
+  transform     : translateY(-2px);
+}
+
+.btn-dark {
+  background    : var(--secondary);
+  color         : var(--white);
+  padding       : 12px 28px;
+  border-radius : var(--radius-full);
+  font-size     : var(--font-sm);
+  font-weight   : 600;
+  transition    : var(--transition);
+  display       : inline-block;
+}
+
+.btn-dark:hover {
+  background    : #333333;
+  transform     : translateY(-2px);
+  box-shadow    : var(--shadow-md);
+}
+
+/* ─────────────────────────────────────
+   SECTION TITLES
+───────────────────────────────────── */
+.section-title {
+  font-size     : var(--font-xxl);
+  font-weight   : 700;
+  color         : var(--text-dark);
+  margin-bottom : var(--space-sm);
+}
+
+.section-subtitle {
+  font-size     : var(--font-md);
+  color         : var(--text-light);
+  margin-bottom : var(--space-xl);
+}
+
+.section-header {
+  text-align    : center;
+  margin-bottom : var(--space-xl);
+}
+
+/* ─────────────────────────────────────
+   FORM ELEMENTS
+───────────────────────────────────── */
+.form-group {
+  margin-bottom : var(--space-md);
+}
+
+.form-label {
+  display       : block;
+  font-size     : var(--font-sm);
+  font-weight   : 500;
+  color         : var(--text-dark);
+  margin-bottom : var(--space-xs);
+}
+
+.form-input {
+  width         : 100%;
+  padding       : 12px var(--space-md);
+  border        : 1.5px solid var(--border);
+  border-radius : var(--radius-md);
+  font-size     : var(--font-sm);
+  color         : var(--text-dark);
+  background    : var(--white);
+  transition    : var(--transition);
+}
+
+.form-input:focus {
+  border-color  : var(--primary);
+  box-shadow    : 0 0 0 3px rgba(255,69,0,0.1);
+}
+
+.form-input::placeholder {
+  color         : var(--text-muted);
+}
+
+/* ─────────────────────────────────────
+   MESSAGES
+───────────────────────────────────── */
+.error-message {
+  color         : var(--error);
+  font-size     : var(--font-sm);
+  margin-top    : var(--space-xs);
+}
+
+.success-message {
+  color         : var(--success);
+  font-size     : var(--font-sm);
+  margin-top    : var(--space-xs);
+}
+
+/* ─────────────────────────────────────
+   LOADING SPINNER
+───────────────────────────────────── */
+.spinner {
+  width         : 40px;
+  height        : 40px;
+  border        : 4px solid var(--border);
+  border-top    : 4px solid var(--primary);
+  border-radius : 50%;
+  animation     : spin 0.8s linear infinite;
+  margin        : var(--space-xxl) auto;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-container {
+  display         : flex;
+  justify-content : center;
+  align-items     : center;
+  min-height      : 300px;
+}
+
+/* ─────────────────────────────────────
+   EMPTY STATE
+───────────────────────────────────── */
+.empty-state {
+  text-align      : center;
+  padding         : var(--space-xxl);
+  color           : var(--text-light);
+}
+
+.empty-state h3 {
+  font-size     : var(--font-xl);
+  margin-bottom : var(--space-sm);
+}
+
+.empty-state p {
+  font-size     : var(--font-md);
+  margin-bottom : var(--space-lg);
+}
+
+/* ─────────────────────────────────────
+   BADGE
+───────────────────────────────────── */
+.badge {
+  background    : var(--primary);
+  color         : var(--white);
+  font-size     : var(--font-xs);
+  font-weight   : 600;
+  padding       : 2px 8px;
+  border-radius : var(--radius-full);
+  display       : inline-block;
+}
+
+/* ─────────────────────────────────────
+   DIVIDER
+───────────────────────────────────── */
+.divider {
+  height        : 1px;
+  background    : var(--border);
+  margin        : var(--space-lg) 0;
+}
+
+/* ─────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────── */
+@media (max-width: 992px) {
+  :root {
+    --font-hero : 40px;
+    --font-xxl  : 28px;
+  }
+
+  .container {
+    padding: 0 var(--space-md);
+  }
+}
+
+@media (max-width: 576px) {
+  :root {
+    --font-hero : 30px;
+    --font-xxl  : 24px;
+    --font-xl   : 20px;
+  }
+
+  .container {
+    padding: 0 var(--space-sm);
+  }
+
+  .btn-primary,
+  .btn-secondary,
+  .btn-dark {
+    padding   : 10px 20px;
+    font-size : var(--font-xs);
+  }
+}
+/* ─────────────────────────────────────
+   NOT FOUND PAGE
+───────────────────────────────────── */
+.notfound-page {
+    min-height       : calc(100vh -
+                       var(--navbar-height));
+    display          : flex;
+    align-items      : center;
+    justify-content  : center;
+    text-align       : center;
+    padding          : var(--space-xl);
+}
+
+.notfound-content {
+    display          : flex;
+    flex-direction   : column;
+    align-items      : center;
+    gap              : var(--space-md);
+}
+
+.notfound-icon {
+    font-size        : 60px;
+    color            : var(--primary);
+}
+
+.notfound-title {
+    font-size        : 120px;
+    font-weight      : 800;
+    color            : var(--primary);
+    line-height      : 1;
+}
+
+.notfound-subtitle {
+    font-size        : var(--font-xxl);
+    font-weight      : 700;
+    color            : var(--text-dark);
+}
+
+.notfound-desc {
+    font-size        : var(--font-md);
+    color            : var(--text-light);
+    max-width        : 400px;
+}
+
+.notfound-buttons {
+    display          : flex;
+    gap              : var(--space-md);
+    margin-top       : var(--space-md);
+    flex-wrap        : wrap;
+    justify-content  : center;
+}
+
+.notfound-buttons .btn-primary,
+.notfound-buttons .btn-secondary {
+    display          : inline-flex;
+    align-items      : center;
+    gap              : var(--space-sm);
+    text-decoration  : none;
+}

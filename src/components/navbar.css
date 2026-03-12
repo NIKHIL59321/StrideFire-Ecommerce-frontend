@@ -1,0 +1,370 @@
+/* ─────────────────────────────────────
+   NAVBAR
+───────────────────────────────────── */
+.navbar {
+    position         : fixed;
+    top              : 0;
+    left             : 0;
+    width            : 100%;
+    height           : var(--navbar-height);
+    background       : var(--white);
+    box-shadow       : var(--shadow-sm);
+    z-index          : 1000;
+}
+
+.navbar-container {
+    display          : flex;
+    align-items      : center;
+    justify-content  : space-between;
+    height           : 100%;
+}
+
+/* ─────────────────────────────────────
+   LOGO
+───────────────────────────────────── */
+.navbar-logo {
+    display          : flex;
+    align-items      : center;
+    gap              : var(--space-sm);
+    text-decoration  : none;
+}
+
+.logo-icon {
+    color            : var(--primary);
+    font-size        : 24px;
+}
+
+.logo-text {
+    font-size        : var(--font-lg);
+    font-weight      : 800;
+    color            : var(--text-dark);
+    letter-spacing   : -0.5px;
+}
+
+.logo-text span {
+    color            : var(--primary);
+}
+
+/* ─────────────────────────────────────
+   NAV LINKS
+───────────────────────────────────── */
+.navbar-links {
+    display          : flex;
+    align-items      : center;
+    gap              : var(--space-xl);
+    list-style       : none;
+}
+
+.nav-link {
+    font-size        : var(--font-sm);
+    font-weight      : 500;
+    color            : var(--text-dark);
+    text-decoration  : none;
+    position         : relative;
+    transition       : var(--transition);
+}
+
+.nav-link::after {
+    content          : '';
+    position         : absolute;
+    bottom           : -4px;
+    left             : 0;
+    width            : 0;
+    height           : 2px;
+    background       : var(--primary);
+    transition       : var(--transition);
+}
+
+.nav-link:hover {
+    color            : var(--primary);
+}
+
+.nav-link:hover::after {
+    width            : 100%;
+}
+
+/* ─────────────────────────────────────
+   NAVBAR RIGHT
+───────────────────────────────────── */
+.navbar-right {
+    display          : flex;
+    align-items      : center;
+    gap              : var(--space-md);
+}
+
+/* ─────────────────────────────────────
+   SEARCH
+───────────────────────────────────── */
+.search-wrapper {
+    display          : flex;
+    align-items      : center;
+    gap              : var(--space-sm);
+}
+
+.search-form-desktop {
+    display          : flex;
+    align-items      : center;
+}
+
+.search-input-desktop {
+    padding          : 8px var(--space-md);
+    border           : 1.5px solid var(--border);
+    border-radius    : var(--radius-full);
+    font-size        : var(--font-sm);
+    width            : 200px;
+    transition       : var(--transition);
+}
+
+.search-input-desktop:focus {
+    border-color     : var(--primary);
+    outline          : none;
+}
+
+.icon-btn {
+    background       : none;
+    border           : none;
+    cursor           : pointer;
+    font-size        : 20px;
+    color            : var(--text-dark);
+    display          : flex;
+    align-items      : center;
+    transition       : var(--transition);
+    padding          : var(--space-xs);
+}
+
+.icon-btn:hover {
+    color            : var(--primary);
+}
+
+/* ─────────────────────────────────────
+   CART
+───────────────────────────────────── */
+.cart-wrapper {
+    position         : relative;
+    display          : flex;
+    align-items      : center;
+    color            : var(--text-dark);
+    transition       : var(--transition);
+}
+
+.cart-wrapper:hover {
+    color            : var(--primary);
+}
+
+.cart-icon {
+    font-size        : 22px;
+}
+
+.cart-badge {
+    position         : absolute;
+    top              : -8px;
+    right            : -8px;
+    background       : var(--primary);
+    color            : var(--white);
+    font-size        : 10px;
+    font-weight      : 700;
+    width            : 18px;
+    height           : 18px;
+    border-radius    : 50%;
+    display          : flex;
+    align-items      : center;
+    justify-content  : center;
+}
+
+/* ─────────────────────────────────────
+   AUTH BUTTONS
+───────────────────────────────────── */
+.auth-links {
+    display          : flex;
+    align-items      : center;
+    gap              : var(--space-sm);
+}
+
+.btn-login {
+    font-size        : var(--font-sm);
+    font-weight      : 500;
+    color            : var(--text-dark);
+    text-decoration  : none;
+    transition       : var(--transition);
+}
+
+.btn-login:hover {
+    color            : var(--primary);
+}
+
+.btn-register {
+    font-size        : var(--font-sm);
+    font-weight      : 600;
+    color            : var(--white);
+    background       : var(--primary);
+    padding          : 8px 20px;
+    border-radius    : var(--radius-full);
+    text-decoration  : none;
+    transition       : var(--transition);
+}
+
+.btn-register:hover {
+    background       : var(--primary-dark);
+    transform        : translateY(-1px);
+}
+
+/* ─────────────────────────────────────
+   USER MENU
+───────────────────────────────────── */
+.user-menu {
+    display          : flex;
+    align-items      : center;
+    gap              : var(--space-md);
+}
+
+.username {
+    font-size        : var(--font-sm);
+    font-weight      : 500;
+    color            : var(--text-dark);
+}
+
+.btn-logout {
+    font-size        : var(--font-sm);
+    font-weight      : 600;
+    color            : var(--primary);
+    background       : transparent;
+    border           : 1.5px solid var(--primary);
+    padding          : 6px 16px;
+    border-radius    : var(--radius-full);
+    cursor           : pointer;
+    transition       : var(--transition);
+}
+
+.btn-logout:hover {
+    background       : var(--primary);
+    color            : var(--white);
+}
+
+/* ─────────────────────────────────────
+   HAMBURGER
+───────────────────────────────────── */
+.hamburger {
+    display          : none;
+    background       : none;
+    border           : none;
+    font-size        : 24px;
+    cursor           : pointer;
+    color            : var(--text-dark);
+    transition       : var(--transition);
+}
+
+.hamburger:hover {
+    color            : var(--primary);
+}
+
+/* ─────────────────────────────────────
+   MOBILE ONLY
+───────────────────────────────────── */
+.mobile-search,
+.mobile-auth {
+    display          : none;
+}
+
+/* ─────────────────────────────────────
+   RESPONSIVE — TABLET
+───────────────────────────────────── */
+@media (max-width: 992px) {
+    .auth-wrapper {
+        display      : none;
+    }
+
+    .search-wrapper {
+        display      : none;
+    }
+
+    .hamburger {
+        display      : flex;
+    }
+
+    .navbar-links {
+        display          : none;
+        position         : absolute;
+        top              : var(--navbar-height);
+        left             : 0;
+        width            : 100%;
+        background       : var(--white);
+        flex-direction   : column;
+        align-items      : flex-start;
+        padding          : var(--space-md);
+        box-shadow       : var(--shadow-md);
+        gap              : var(--space-md);
+        border-top       : 1px solid var(--border);
+    }
+
+    .navbar-links.open {
+        display      : flex;
+    }
+
+    .mobile-search,
+    .mobile-auth {
+        display      : block;
+        width        : 100%;
+    }
+
+    .search-form {
+        display          : flex;
+        align-items      : center;
+        border           : 1.5px solid var(--border);
+        border-radius    : var(--radius-full);
+        overflow         : hidden;
+        width            : 100%;
+    }
+
+    .search-input {
+        flex             : 1;
+        padding          : 10px var(--space-md);
+        border           : none;
+        font-size        : var(--font-sm);
+        outline          : none;
+    }
+
+    .search-btn {
+        padding          : 10px var(--space-md);
+        background       : var(--primary);
+        color            : var(--white);
+        border           : none;
+        cursor           : pointer;
+        font-size        : 16px;
+        display          : flex;
+        align-items      : center;
+    }
+
+    .mobile-user {
+        display          : flex;
+        align-items      : center;
+        justify-content  : space-between;
+        width            : 100%;
+    }
+
+    .mobile-username {
+        font-size        : var(--font-sm);
+        font-weight      : 500;
+    }
+
+    .mobile-auth-links {
+        display          : flex;
+        gap              : var(--space-sm);
+        width            : 100%;
+    }
+
+    .mobile-auth-links .btn-login,
+    .mobile-auth-links .btn-register {
+        flex             : 1;
+        text-align       : center;
+        padding          : 10px;
+    }
+}
+
+/* ─────────────────────────────────────
+   RESPONSIVE — MOBILE
+───────────────────────────────────── */
+@media (max-width: 576px) {
+    .logo-text {
+        font-size    : var(--font-md);
+    }
+}

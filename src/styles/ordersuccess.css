@@ -1,0 +1,159 @@
+/* ─────────────────────────────────────
+   ORDER SUCCESS PAGE
+───────────────────────────────────── */
+.success-page {
+    min-height       : calc(100vh -
+                       var(--navbar-height));
+    display          : flex;
+    align-items      : center;
+    justify-content  : center;
+    padding          : var(--space-xl)
+                       var(--space-md);
+    background       : var(--background);
+}
+
+/* ─────────────────────────────────────
+   SUCCESS CARD
+───────────────────────────────────── */
+.success-card {
+    background       : var(--white);
+    border-radius    : var(--radius-xl);
+    box-shadow       : var(--shadow-lg);
+    padding          : var(--space-xxl) 40px;
+    width            : 100%;
+    max-width        : 500px;
+    text-align       : center;
+}
+
+/* ─────────────────────────────────────
+   SUCCESS ICON
+───────────────────────────────────── */
+.success-icon-wrapper {
+    display          : flex;
+    align-items      : center;
+    justify-content  : center;
+    width            : 90px;
+    height           : 90px;
+    background       : rgba(40, 167, 69, 0.1);
+    border-radius    : 50%;
+    margin           : 0 auto var(--space-lg);
+    animation        : popIn 0.5s
+                       cubic-bezier(0.175, 0.885,
+                       0.32, 1.275);
+}
+
+.success-icon {
+    font-size        : 48px;
+    color            : var(--success);
+}
+
+@keyframes popIn {
+    0%   { transform: scale(0); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* ─────────────────────────────────────
+   SUCCESS HEADING
+───────────────────────────────────── */
+.success-title {
+    font-size        : var(--font-xxl);
+    font-weight      : 800;
+    color            : var(--text-dark);
+    margin-bottom    : var(--space-sm);
+}
+
+.success-subtitle {
+    font-size        : var(--font-md);
+    color            : var(--text-light);
+    margin-bottom    : var(--space-xl);
+}
+
+/* ─────────────────────────────────────
+   SUCCESS DETAILS
+───────────────────────────────────── */
+.success-details {
+    background       : var(--background);
+    border-radius    : var(--radius-lg);
+    padding          : var(--space-lg);
+    margin-bottom    : var(--space-xl);
+    text-align       : left;
+    display          : flex;
+    flex-direction   : column;
+    gap              : var(--space-md);
+}
+
+.success-detail-row {
+    display          : flex;
+    justify-content  : space-between;
+    align-items      : center;
+    padding-bottom   : var(--space-sm);
+    border-bottom    : 1px solid var(--border);
+}
+
+.success-detail-row:last-child {
+    border-bottom    : none;
+    padding-bottom   : 0;
+}
+
+.detail-label {
+    font-size        : var(--font-sm);
+    color            : var(--text-light);
+}
+
+.detail-value {
+    font-size        : var(--font-sm);
+    font-weight      : 600;
+    color            : var(--text-dark);
+}
+
+.status-confirmed {
+    color            : var(--success);
+}
+
+/* ─────────────────────────────────────
+   SUCCESS BUTTONS
+───────────────────────────────────── */
+.success-buttons {
+    display          : flex;
+    gap              : var(--space-md);
+    justify-content  : center;
+    flex-wrap        : wrap;
+}
+
+.success-buttons .btn-primary {
+    display          : inline-flex;
+    align-items      : center;
+    gap              : var(--space-sm);
+    text-decoration  : none;
+}
+
+.success-buttons .btn-secondary {
+    display          : inline-flex;
+    align-items      : center;
+    gap              : var(--space-sm);
+    text-decoration  : none;
+}
+
+/* ─────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────── */
+@media (max-width: 576px) {
+    .success-card {
+        padding          : var(--space-xl)
+                           var(--space-md);
+    }
+
+    .success-title {
+        font-size        : var(--font-xl);
+    }
+
+    .success-buttons {
+        flex-direction   : column;
+    }
+
+    .success-buttons .btn-primary,
+    .success-buttons .btn-secondary {
+        width            : 100%;
+        justify-content  : center;
+    }
+}

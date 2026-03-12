@@ -1,0 +1,417 @@
+/* ─────────────────────────────────────
+   PRODUCT DETAIL PAGE
+───────────────────────────────────── */
+.product-detail-page {
+    padding          : var(--space-xl) 0
+                       var(--space-xxl);
+}
+
+/* ─────────────────────────────────────
+   BACK BUTTON
+───────────────────────────────────── */
+.back-btn {
+    display          : inline-flex;
+    align-items      : center;
+    gap              : var(--space-xs);
+    background       : none;
+    border           : none;
+    font-size        : var(--font-sm);
+    font-weight      : 500;
+    color            : var(--text-light);
+    cursor           : pointer;
+    margin-bottom    : var(--space-xl);
+    font-family      : var(--font-primary);
+    transition       : var(--transition);
+}
+
+.back-btn:hover {
+    color            : var(--primary);
+}
+
+/* ─────────────────────────────────────
+   PRODUCT GRID
+───────────────────────────────────── */
+.product-detail-grid {
+    display          : grid;
+    grid-template-columns: 1fr 1fr;
+    gap              : var(--space-xxl);
+    margin-bottom    : var(--space-xxl);
+}
+
+/* ─────────────────────────────────────
+   PRODUCT IMAGE
+───────────────────────────────────── */
+.detail-image-wrapper {
+    position         : relative;
+    border-radius    : var(--radius-xl);
+    overflow         : hidden;
+    background       : var(--background);
+    aspect-ratio     : 1;
+}
+
+.detail-image {
+    width            : 100%;
+    height           : 100%;
+    object-fit       : cover;
+    transition       : var(--transition);
+}
+
+.detail-image-wrapper:hover
+.detail-image {
+    transform        : scale(1.03);
+}
+
+.detail-out-of-stock {
+    position         : absolute;
+    inset            : 0;
+    background       : rgba(0,0,0,0.5);
+    display          : flex;
+    align-items      : center;
+    justify-content  : center;
+    color            : var(--white);
+    font-size        : var(--font-xl);
+    font-weight      : 700;
+}
+
+/* ─────────────────────────────────────
+   PRODUCT INFO
+───────────────────────────────────── */
+.detail-info {
+    display          : flex;
+    flex-direction   : column;
+    gap              : var(--space-md);
+}
+
+.detail-brand-row {
+    display          : flex;
+    align-items      : center;
+    gap              : var(--space-sm);
+}
+
+.detail-brand {
+    font-size        : var(--font-sm);
+    font-weight      : 700;
+    color            : var(--primary);
+    text-transform   : uppercase;
+    letter-spacing   : 1px;
+}
+
+.detail-category {
+    font-size        : var(--font-xs);
+    background       : var(--background);
+    color            : var(--text-light);
+    padding          : 4px 12px;
+    border-radius    : var(--radius-full);
+}
+
+.detail-name {
+    font-size        : var(--font-xxl);
+    font-weight      : 800;
+    color            : var(--text-dark);
+    line-height      : 1.2;
+}
+
+.detail-price-row {
+    display          : flex;
+    align-items      : baseline;
+    gap              : var(--space-md);
+}
+
+.detail-price {
+    font-size        : var(--font-xxl);
+    font-weight      : 800;
+    color            : var(--text-dark);
+}
+
+.detail-tax {
+    font-size        : var(--font-xs);
+    color            : var(--text-muted);
+}
+
+.detail-divider {
+    height           : 1px;
+    background       : var(--border);
+}
+
+/* ─────────────────────────────────────
+   SPECS
+───────────────────────────────────── */
+.detail-specs {
+    display          : flex;
+    gap              : var(--space-xl);
+}
+
+.detail-spec {
+    display          : flex;
+    flex-direction   : column;
+    gap              : var(--space-xs);
+}
+
+.spec-label {
+    font-size        : var(--font-xs);
+    color            : var(--text-muted);
+    text-transform   : uppercase;
+    letter-spacing   : 0.5px;
+}
+
+.spec-value {
+    font-size        : var(--font-md);
+    font-weight      : 600;
+    color            : var(--text-dark);
+}
+
+/* ─────────────────────────────────────
+   STOCK STATUS
+───────────────────────────────────── */
+.detail-stock {
+    font-size        : var(--font-sm);
+    font-weight      : 600;
+    padding          : var(--space-sm)
+                       var(--space-md);
+    border-radius    : var(--radius-md);
+}
+
+.detail-stock.in-stock {
+    background       : rgba(40, 167, 69, 0.1);
+    color            : var(--success);
+}
+
+.detail-stock.out-stock {
+    background       : rgba(220, 53, 69, 0.1);
+    color            : var(--error);
+}
+
+/* ─────────────────────────────────────
+   ACTIONS
+───────────────────────────────────── */
+.detail-actions {
+    display          : flex;
+    align-items      : center;
+    gap              : var(--space-md);
+}
+
+/* Quantity Selector */
+.quantity-selector {
+    display          : flex;
+    align-items      : center;
+    border           : 1.5px solid var(--border);
+    border-radius    : var(--radius-full);
+    overflow         : hidden;
+}
+
+.qty-btn {
+    width            : 40px;
+    height           : 40px;
+    background       : var(--background);
+    border           : none;
+    display          : flex;
+    align-items      : center;
+    justify-content  : center;
+    font-size        : 16px;
+    cursor           : pointer;
+    color            : var(--text-dark);
+    transition       : var(--transition);
+}
+
+.qty-btn:hover:not(:disabled) {
+    background       : var(--primary);
+    color            : var(--white);
+}
+
+.qty-btn:disabled {
+    opacity          : 0.4;
+    cursor           : not-allowed;
+}
+
+.qty-value {
+    width            : 48px;
+    text-align       : center;
+    font-size        : var(--font-md);
+    font-weight      : 600;
+}
+
+/* Add to Cart Button */
+.detail-cart-btn {
+    flex             : 1;
+    display          : flex;
+    align-items      : center;
+    justify-content  : center;
+    gap              : var(--space-sm);
+    padding          : 14px var(--space-xl);
+    background       : var(--primary);
+    color            : var(--white);
+    border           : none;
+    border-radius    : var(--radius-full);
+    font-size        : var(--font-md);
+    font-weight      : 600;
+    cursor           : pointer;
+    font-family      : var(--font-primary);
+    transition       : var(--transition);
+}
+
+.detail-cart-btn:hover:not(:disabled) {
+    background       : var(--primary-dark);
+    transform        : translateY(-2px);
+    box-shadow       : var(--shadow-md);
+}
+
+.detail-cart-btn:disabled {
+    opacity          : 0.7;
+    cursor           : not-allowed;
+}
+
+/* Go to Cart */
+.go-to-cart-btn {
+    display          : inline-block;
+    color            : var(--primary);
+    font-size        : var(--font-sm);
+    font-weight      : 600;
+    text-decoration  : none;
+    transition       : var(--transition);
+}
+
+.go-to-cart-btn:hover {
+    color            : var(--primary-dark);
+}
+
+/* ─────────────────────────────────────
+   FEATURES
+───────────────────────────────────── */
+.detail-features {
+    display          : flex;
+    gap              : var(--space-xl);
+}
+
+.feature {
+    display          : flex;
+    align-items      : center;
+    gap              : var(--space-xs);
+    font-size        : var(--font-sm);
+    color            : var(--text-light);
+}
+
+.feature-icon {
+    color            : var(--primary);
+    font-size        : 14px;
+}
+
+/* ─────────────────────────────────────
+   RELATED PRODUCTS
+───────────────────────────────────── */
+.related-section {
+    margin-top       : var(--space-xxl);
+    padding-top      : var(--space-xxl);
+    border-top       : 1px solid var(--border);
+}
+
+.related-section .section-title {
+    margin-bottom    : var(--space-xl);
+}
+
+.related-grid {
+    display          : grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap              : var(--space-lg);
+}
+
+.related-card {
+    text-decoration  : none;
+    color            : var(--text-dark);
+    background       : var(--white);
+    border-radius    : var(--radius-lg);
+    overflow         : hidden;
+    border           : 1.5px solid transparent;
+    transition       : var(--transition);
+}
+
+.related-card:hover {
+    border-color     : var(--primary);
+    transform        : translateY(-4px);
+    box-shadow       : var(--shadow-md);
+}
+
+.related-image {
+    width            : 100%;
+    aspect-ratio     : 1;
+    object-fit       : cover;
+    background       : var(--background);
+}
+
+.related-info {
+    padding          : var(--space-md);
+    display          : flex;
+    flex-direction   : column;
+    gap              : var(--space-xs);
+}
+
+.related-brand {
+    font-size        : var(--font-xs);
+    color            : var(--primary);
+    font-weight      : 600;
+    text-transform   : uppercase;
+}
+
+.related-name {
+    font-size        : var(--font-sm);
+    font-weight      : 600;
+}
+
+.related-price {
+    font-size        : var(--font-md);
+    font-weight      : 700;
+    color            : var(--text-dark);
+}
+
+/* ─────────────────────────────────────
+   RESPONSIVE — TABLET
+───────────────────────────────────── */
+@media (max-width: 992px) {
+    .product-detail-grid {
+        grid-template-columns: 1fr;
+        gap              : var(--space-xl);
+    }
+
+    .detail-image-wrapper {
+        max-width        : 500px;
+        margin           : 0 auto;
+    }
+
+    .related-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ─────────────────────────────────────
+   RESPONSIVE — MOBILE
+───────────────────────────────────── */
+@media (max-width: 576px) {
+    .detail-name {
+        font-size        : var(--font-xl);
+    }
+
+    .detail-price {
+        font-size        : var(--font-xl);
+    }
+
+    .detail-actions {
+        flex-direction   : column;
+    }
+
+    .quantity-selector {
+        width            : 100%;
+        justify-content  : center;
+    }
+
+    .detail-cart-btn {
+        width            : 100%;
+    }
+
+    .detail-features {
+        flex-wrap        : wrap;
+        gap              : var(--space-md);
+    }
+
+    .related-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

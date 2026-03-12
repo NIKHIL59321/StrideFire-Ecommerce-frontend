@@ -1,0 +1,385 @@
+/* ─────────────────────────────────────
+   ORDERS PAGE
+───────────────────────────────────── */
+.orders-page {
+    padding          : var(--space-xl) 0
+                       var(--space-xxl);
+}
+
+/* ─────────────────────────────────────
+   ORDERS HEADER
+───────────────────────────────────── */
+.orders-header {
+    margin-bottom    : var(--space-xl);
+}
+
+.orders-title {
+    font-size        : var(--font-xxl);
+    font-weight      : 700;
+    color            : var(--text-dark);
+}
+
+.orders-subtitle {
+    font-size        : var(--font-sm);
+    color            : var(--text-light);
+    margin-top       : var(--space-xs);
+}
+
+/* ─────────────────────────────────────
+   ORDERS TABS
+───────────────────────────────────── */
+.orders-tabs {
+    display          : flex;
+    gap              : var(--space-sm);
+    margin-bottom    : var(--space-xl);
+    border-bottom    : 2px solid var(--border);
+    padding-bottom   : 0;
+    overflow-x       : auto;
+}
+
+.orders-tab {
+    padding          : var(--space-sm)
+                       var(--space-lg);
+    background       : none;
+    border           : none;
+    font-size        : var(--font-sm);
+    font-weight      : 500;
+    color            : var(--text-light);
+    cursor           : pointer;
+    font-family      : var(--font-primary);
+    transition       : var(--transition);
+    border-bottom    : 2px solid transparent;
+    margin-bottom    : -2px;
+    white-space      : nowrap;
+}
+
+.orders-tab:hover {
+    color            : var(--primary);
+}
+
+.orders-tab.active {
+    color            : var(--primary);
+    font-weight      : 600;
+    border-bottom    : 2px solid var(--primary);
+}
+
+/* ─────────────────────────────────────
+   ORDERS LIST
+───────────────────────────────────── */
+.orders-list {
+    display          : flex;
+    flex-direction   : column;
+    gap              : var(--space-lg);
+}
+
+/* ─────────────────────────────────────
+   ORDER CARD
+───────────────────────────────────── */
+.order-card {
+    background       : var(--white);
+    border-radius    : var(--radius-lg);
+    border           : 1.5px solid var(--border);
+    overflow         : hidden;
+    transition       : var(--transition);
+}
+
+.order-card:hover {
+    box-shadow       : var(--shadow-md);
+    border-color     : var(--primary);
+}
+
+/* Order Card Header */
+.order-card-header {
+    display          : flex;
+    align-items      : center;
+    justify-content  : space-between;
+    padding          : var(--space-md)
+                       var(--space-lg);
+    background       : var(--background);
+    border-bottom    : 1px solid var(--border);
+}
+
+.order-card-left {
+    display          : flex;
+    align-items      : center;
+    gap              : var(--space-md);
+}
+
+.order-id {
+    font-size        : var(--font-md);
+    font-weight      : 700;
+    color            : var(--text-dark);
+}
+
+.order-date {
+    font-size        : var(--font-sm);
+    color            : var(--text-muted);
+}
+
+/* ─────────────────────────────────────
+   ORDER STATUS BADGES
+───────────────────────────────────── */
+.order-status {
+    font-size        : var(--font-xs);
+    font-weight      : 700;
+    padding          : 4px 14px;
+    border-radius    : var(--radius-full);
+    text-transform   : uppercase;
+    letter-spacing   : 0.5px;
+}
+
+.status-placed {
+    background       : rgba(255, 193, 7, 0.15);
+    color            : #B8860B;
+}
+
+.status-shipped {
+    background       : rgba(0, 123, 255, 0.15);
+    color            : #0056b3;
+}
+
+.status-delivered {
+    background       : rgba(40, 167, 69, 0.15);
+    color            : var(--success);
+}
+
+.status-cancelled {
+    background       : rgba(220, 53, 69, 0.15);
+    color            : var(--error);
+}
+
+/* Tab count badge */
+.tab-count {
+    display          : inline-flex;
+    align-items      : center;
+    justify-content  : center;
+    background       : var(--background);
+    color            : var(--text-muted);
+    font-size        : 11px;
+    font-weight      : 700;
+    min-width        : 20px;
+    height           : 20px;
+    border-radius    : var(--radius-full);
+    padding          : 0 6px;
+    margin-left      : var(--space-xs);
+}
+
+.orders-tab.active .tab-count {
+    background       : rgba(255, 69, 0, 0.15);
+    color            : var(--primary);
+}
+
+.no-items-text {
+    font-size        : var(--font-sm);
+    color            : var(--text-muted);
+    text-align       : center;
+    padding          : var(--space-md);
+}
+/* ─────────────────────────────────────
+   ORDER ITEMS
+───────────────────────────────────── */
+.order-items {
+    padding          : var(--space-md)
+                       var(--space-lg);
+    display          : flex;
+    flex-direction   : column;
+    gap              : var(--space-md);
+}
+
+.order-item {
+    display          : flex;
+    align-items      : center;
+    gap              : var(--space-md);
+}
+
+.order-item-image {
+    width            : 64px;
+    height           : 64px;
+    border-radius    : var(--radius-md);
+    object-fit       : cover;
+    background       : var(--background);
+    flex-shrink      : 0;
+}
+
+.order-item-info {
+    flex             : 1;
+    display          : flex;
+    flex-direction   : column;
+    gap              : 4px;
+}
+
+.order-item-name {
+    font-size        : var(--font-sm);
+    font-weight      : 600;
+    color            : var(--text-dark);
+}
+
+.order-item-meta {
+    font-size        : var(--font-xs);
+    color            : var(--text-muted);
+}
+
+.order-item-price {
+    font-size        : var(--font-sm);
+    font-weight      : 700;
+    color            : var(--text-dark);
+    flex-shrink      : 0;
+}
+
+/* ─────────────────────────────────────
+   ORDER CARD FOOTER
+───────────────────────────────────── */
+.order-card-footer {
+    display          : flex;
+    align-items      : center;
+    justify-content  : space-between;
+    padding          : var(--space-md)
+                       var(--space-lg);
+    border-top       : 1px solid var(--border);
+    background       : var(--background);
+}
+
+.order-total {
+    display          : flex;
+    align-items      : center;
+    gap              : var(--space-md);
+    font-size        : var(--font-sm);
+    color            : var(--text-light);
+}
+
+.order-total-amount {
+    font-size        : var(--font-lg);
+    font-weight      : 700;
+    color            : var(--text-dark);
+}
+
+/* Cancel Button */
+.cancel-order-btn {
+    padding          : 8px 20px;
+    background       : transparent;
+    border           : 1.5px solid var(--error);
+    color            : var(--error);
+    border-radius    : var(--radius-full);
+    font-size        : var(--font-sm);
+    font-weight      : 600;
+    cursor           : pointer;
+    font-family      : var(--font-primary);
+    transition       : var(--transition);
+}
+
+.cancel-order-btn:hover:not(:disabled) {
+    background       : var(--error);
+    color            : var(--white);
+}
+
+.cancel-order-btn:disabled {
+    opacity          : 0.6;
+    cursor           : not-allowed;
+}
+
+/* ─────────────────────────────────────
+   EMPTY ORDERS
+───────────────────────────────────── */
+.empty-orders {
+    display          : flex;
+    flex-direction   : column;
+    align-items      : center;
+    justify-content  : center;
+    padding          : var(--space-xxl);
+    text-align       : center;
+    gap              : var(--space-md);
+}
+
+.empty-orders-icon {
+    font-size        : 80px;
+    color            : var(--border);
+}
+
+.empty-orders h3 {
+    font-size        : var(--font-xl);
+    color            : var(--text-dark);
+}
+
+.empty-orders p {
+    font-size        : var(--font-md);
+    color            : var(--text-light);
+}
+
+.empty-orders .btn-primary {
+    display          : inline-flex;
+    align-items      : center;
+    gap              : var(--space-sm);
+    text-decoration  : none;
+    margin-top       : var(--space-md);
+}
+
+/* ─────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────── */
+@media (max-width: 576px) {
+    .order-card-header {
+        flex-direction   : column;
+        align-items      : flex-start;
+        gap              : var(--space-sm);
+    }
+
+    .order-card-footer {
+        flex-direction   : column;
+        align-items      : flex-start;
+        gap              : var(--space-md);
+    }
+
+    .cancel-order-btn {
+        width            : 100%;
+        text-align       : center;
+    }
+}
+/* ─────────────────────────────────────
+   PAYMENT STATUS
+───────────────────────────────────── */
+.payment-status-row {
+    display          : flex;
+    align-items      : center;
+    gap              : var(--space-sm);
+    padding          : var(--space-sm)
+                       var(--space-lg);
+    border-top       : 1px solid var(--border);
+    background       : var(--background);
+}
+
+.payment-label {
+    font-size        : var(--font-sm);
+    color            : var(--text-light);
+    font-weight      : 500;
+}
+
+.payment-badge {
+    font-size        : var(--font-xs);
+    font-weight      : 700;
+    padding          : 4px 12px;
+    border-radius    : var(--radius-full);
+}
+
+.payment-success {
+    background       : rgba(40, 167, 69, 0.15);
+    color            : var(--success);
+}
+
+.payment-failed {
+    background       : rgba(220, 53, 69, 0.15);
+    color            : var(--error);
+}
+
+.payment-pending {
+    background       : rgba(255, 193, 7, 0.15);
+    color            : #B8860B;
+}
+
+.payment-method-badge {
+    font-size        : var(--font-xs);
+    color            : var(--text-muted);
+    background       : var(--white);
+    border           : 1px solid var(--border);
+    padding          : 4px 10px;
+    border-radius    : var(--radius-full);
+}

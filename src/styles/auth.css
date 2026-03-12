@@ -1,0 +1,233 @@
+/* ─────────────────────────────────────
+   AUTH PAGE
+───────────────────────────────────── */
+.auth-page {
+    min-height       : calc(100vh - var(--navbar-height));
+    display          : flex;
+    align-items      : center;
+    justify-content  : center;
+    background       : var(--background);
+    padding          : var(--space-xl) var(--space-md);
+}
+
+/* ─────────────────────────────────────
+   AUTH CARD
+───────────────────────────────────── */
+.auth-card {
+    background       : var(--white);
+    padding          : var(--space-xl) 40px;
+    border-radius    : var(--radius-xl);
+    box-shadow       : var(--shadow-lg);
+    width            : 100%;
+    max-width        : 420px;
+}
+
+/* ─────────────────────────────────────
+   AUTH LOGO
+───────────────────────────────────── */
+.auth-logo {
+    display          : flex;
+    align-items      : center;
+    justify-content  : center;
+    gap              : var(--space-sm);
+    margin-bottom    : var(--space-lg);
+}
+
+.auth-logo-icon {
+    color            : var(--primary);
+    font-size        : 28px;
+}
+
+.auth-logo-text {
+    font-size        : var(--font-xl);
+    font-weight      : 800;
+    color            : var(--text-dark);
+}
+
+/* ─────────────────────────────────────
+   AUTH HEADING
+───────────────────────────────────── */
+.auth-title {
+    font-size        : var(--font-xl);
+    font-weight      : 700;
+    color            : var(--text-dark);
+    text-align       : center;
+    margin-bottom    : var(--space-xs);
+}
+
+.auth-subtitle {
+    font-size        : var(--font-sm);
+    color            : var(--text-light);
+    text-align       : center;
+    margin-bottom    : var(--space-lg);
+}
+
+/* ─────────────────────────────────────
+   AUTH FORM
+───────────────────────────────────── */
+.auth-form {
+    display          : flex;
+    flex-direction   : column;
+    gap              : var(--space-sm);
+}
+
+/* ─────────────────────────────────────
+   PASSWORD WRAPPER
+───────────────────────────────────── */
+.password-wrapper {
+    position         : relative;
+}
+
+.password-wrapper .form-input {
+    padding-right    : 45px;
+}
+
+.eye-btn {
+    position         : absolute;
+    right            : var(--space-md);
+    top              : 50%;
+    transform        : translateY(-50%);
+    background       : none;
+    border           : none;
+    cursor           : pointer;
+    color            : var(--text-light);
+    font-size        : 18px;
+    display          : flex;
+    align-items      : center;
+    transition       : var(--transition);
+}
+
+.eye-btn:hover {
+    color            : var(--primary);
+}
+
+/* ─────────────────────────────────────
+   AUTH BUTTON
+───────────────────────────────────── */
+.auth-btn {
+    width            : 100%;
+    padding          : 14px;
+    background       : var(--primary);
+    color            : var(--white);
+    border           : none;
+    border-radius    : var(--radius-full);
+    font-size        : var(--font-md);
+    font-weight      : 600;
+    cursor           : pointer;
+    transition       : var(--transition);
+    margin-top       : var(--space-sm);
+}
+
+.auth-btn:hover:not(:disabled) {
+    background       : var(--primary-dark);
+    transform        : translateY(-2px);
+    box-shadow       : var(--shadow-md);
+}
+
+.auth-btn:disabled {
+    opacity          : 0.7;
+    cursor           : not-allowed;
+}
+
+/* ─────────────────────────────────────
+   DIVIDER
+───────────────────────────────────── */
+.auth-divider {
+    display          : flex;
+    align-items      : center;
+    gap              : var(--space-md);
+    margin           : var(--space-md) 0;
+    color            : var(--text-muted);
+    font-size        : var(--font-sm);
+}
+
+.auth-divider::before,
+.auth-divider::after {
+    content          : '';
+    flex             : 1;
+    height           : 1px;
+    background       : var(--border);
+}
+
+/* ─────────────────────────────────────
+   GOOGLE BUTTON
+───────────────────────────────────── */
+.btn-google {
+    width            : 100%;
+    display          : flex;
+    align-items      : center;
+    justify-content  : center;
+    gap              : var(--space-sm);
+    padding          : 12px;
+    border           : 1.5px solid var(--border);
+    border-radius    : var(--radius-full);
+    background       : var(--white);
+    color            : var(--text-dark);
+    font-size        : var(--font-sm);
+    font-weight      : 600;
+    cursor           : pointer;
+    transition       : var(--transition);
+}
+
+.btn-google:hover {
+    background       : #F5F5F5;
+    border-color     : var(--border-dark);
+    transform        : translateY(-1px);
+    box-shadow       : var(--shadow-sm);
+}
+
+/* ─────────────────────────────────────
+   AUTH FOOTER
+───────────────────────────────────── */
+.auth-footer {
+    text-align       : center;
+    font-size        : var(--font-sm);
+    color            : var(--text-light);
+    margin-top       : var(--space-lg);
+}
+
+.auth-footer a {
+    color            : var(--primary);
+    font-weight      : 600;
+    text-decoration  : none;
+    transition       : var(--transition);
+}
+
+.auth-footer a:hover {
+    color            : var(--primary-dark);
+    text-decoration  : underline;
+}
+
+/* ─────────────────────────────────────
+   ERROR + SUCCESS BOXES
+───────────────────────────────────── */
+.error-box {
+    background       : #FFF0F0;
+    color            : var(--error);
+    border           : 1px solid #FFCCCC;
+    border-radius    : var(--radius-md);
+    padding          : var(--space-sm) var(--space-md);
+    font-size        : var(--font-sm);
+    margin-bottom    : var(--space-sm);
+    text-align       : center;
+}
+
+.success-box {
+    background       : #F0FFF4;
+    color            : var(--success);
+    border           : 1px solid #CCFFDD;
+    border-radius    : var(--radius-md);
+    padding          : var(--space-sm) var(--space-md);
+    font-size        : var(--font-sm);
+    margin-bottom    : var(--space-sm);
+    text-align       : center;
+}
+
+/* ─────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────── */
+@media (max-width: 576px) {
+    .auth-card {
+        padding      : var(--space-lg) var(--space-md);
+    }
+}
